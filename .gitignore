@@ -1,0 +1,5 @@
+# Project exclude paths
+/springboot-redis-cache/target/
+/springboot-restful-api/target/
+/springboot-ssm/target/
+.idea
