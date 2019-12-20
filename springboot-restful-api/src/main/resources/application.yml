@@ -8,9 +8,22 @@ mybatis:
 spring:
   application:
     name: springboot-ssm
+
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/springboot?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123zxc
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123zxc
+    database: 0
+    lettuce:
+      pool:
+        max-active: 32
+        max-wait: 300ms
+        max-idle: 16
+        min-idle: 8

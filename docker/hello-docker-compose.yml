@@ -1,0 +1,14 @@
+version: "3"
+services:
+  springboot-hello:
+    image: maven:3-jdk-8
+    container_name: springboot-hello
+    #hostname: trade-base
+    network_mode: bridge
+    ports:
+      - "8888:8888"
+    volumes:
+      - /Users/admin2/Downloads/SpringBoot:/Users/admin2/Downloads/SpringBoot
+      - /Users/admin2/.m2:/root/.m2
+    working_dir: /Users/admin2/Downloads/SpringBoot/springboot-hello
+    command: ["/bin/sh", "-c", "mvn clean spring-boot:run"]

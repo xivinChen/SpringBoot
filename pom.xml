@@ -12,6 +12,8 @@
         <module>springboot-ssm</module>
         <module>springboot-restful-api</module>
         <module>springboot-redis-cache</module>
+        <module>springboot-redis-cache-starter</module>
+        <module>springboot-thymeleaf</module>
     </modules>
 
 

@@ -1,0 +1,17 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: springboot-redis-cache-starter
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123zxc
+    database: 0
+    lettuce:
+      pool:
+        max-active: 32
+        max-wait: 300ms
+        max-idle: 16
+        min-idle: 8

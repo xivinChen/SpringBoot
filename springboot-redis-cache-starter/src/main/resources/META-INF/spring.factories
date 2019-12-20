@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=xyz.java1024.autoconfigure.Java1024RedisStarterConfig

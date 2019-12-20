@@ -1,0 +1,12 @@
+version: "2"
+services:
+  redis-compose:
+    image: redis:3
+    container_name: redis-compose
+    network_mode: bridge
+    hostname: redis-compose
+    volumes:
+      - ./redis-compose/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass 123zxc
+    ports:
+      - "6379:6379"

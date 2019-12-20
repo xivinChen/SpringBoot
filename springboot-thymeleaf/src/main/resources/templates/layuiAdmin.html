@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>layout 后台大布局 - Layui</title>
+  <link rel="stylesheet" href="/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">layui 后台布局</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="javascript:loadBodyBtn('timeLine.html');">控制台</a></li>
+      <li class="layui-nav-item"><a href="javascript:loadBodyBtn('tab.html');">商品管理</a></li>
+      <li class="layui-nav-item"><a href="javascript:loadBodyBtn('timeLine.html');">用户</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          贤心
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a data-method="confirmExist" class="layui-btn-my">退出</a></li>
+    </ul>
+  </div>
+
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">所有商品</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:loadBodyBtn('list0.html');">列表一</a></dd>
+            <dd><a href="javascript:loadBodyBtn('list1.html');">列表二</a></dd>
+            <dd><a href="javascript:loadBodyBtn('list2.html');">列表三</a></dd>
+            <dd><a href="javascript:loadBodyBtn('list3.html');">超链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">解决方案</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;">列表二</a></dd>
+            <dd><a href="">超链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item"><a href="javascript:loadBodyBtn('alertDemo.html');">云市场</a></li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li>
+      </ul>
+    </div>
+  </div>
+
+   <div class="layui-body" id="addBody">
+     <!-- 内容主体区域 -->
+    <!-- <div style="padding: 15px;">内容主体区域</div> -->
+  </div>
+
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © layui.com - 底部固定区域
+  </div>
+</div>
+<script src="/js/layui.js"></script>
+<script>
+
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+
+});
+
+//透明弹窗
+layui.use('layer', function(){ //独立版的layer无需执行这一句
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+        //触发事件
+        var active = {
+            setTop: function(){
+                var that = this;
+                //多窗口模式，层叠置顶
+                layer.open({
+                    type: 2 //此处以iframe举例
+                    ,title: '当你选择该窗体时，即会在最顶端'
+                    ,area: ['390px', '260px']
+                    ,shade: 0
+                    ,maxmin: true
+                    ,offset: [ //为了演示，随机坐标
+                        Math.random()*($(window).height()-300)
+                        ,Math.random()*($(window).width()-390)
+                    ]
+                    ,content: '//layer.layui.com/test/settop.html'
+                    ,btn: ['继续弹出', '全部关闭'] //只是为了演示
+                    ,yes: function(){
+                        $(that).click();
+                    }
+                    ,btn2: function(){
+                        layer.closeAll();
+                    }
+
+                    ,zIndex: layer.zIndex //重点1
+                    ,success: function(layero){
+                        layer.setTop(layero); //重点2
+                    }
+                });
+            }
+            ,confirmTrans: function(){
+                //配置一个透明的询问框
+                layer.msg('大部分参数都是可以公用的<br>合理搭配，展示不一样的风格', {
+                    time: 20000, //20s后自动关闭
+                    btn: ['明白了', '知道了', '哦']
+                });
+            }
+            ,confirmExist: function() {
+                //配置退出确认框
+                layer.open({
+                    type: 1
+                    ,title: '退出提示'
+                    ,closeBtn: false
+                    ,area: '200px'
+                    ,shade: 0.7
+                    ,id: 'lay_exist_confirm'
+                    ,btn: ['取消','确定']
+                    ,moveType: 1
+                    ,content: '     您确定要退出吗？'
+                    ,success: function(layero) {
+                        var btn=layero.find('.layui-layer-btn');
+                        btn.find('.layui-layer-btn0').attr({
+                            href: 'http://localhost'
+
+                        });
+                        btn.find('.layui-layer-btn1').attr({
+                            href: 'http://localhost/index.html'
+
+                         });
+                    }
+                });
+            }
+            ,notice: function(){
+                //示范一个公告层
+                layer.open({
+                    type: 1
+                    ,title: false //不显示标题栏
+                    ,closeBtn: false
+                    ,area: '300px;'
+                    ,shade: 0.8
+                    ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                    ,btn: ['火速围观', '残忍拒绝']
+                    ,btnAlign: 'c'
+                    ,moveType: 1 //拖拽模式，0或者1
+                    ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">你知道吗？亲！<br>layer ≠ layui<br><br>layer只是作为Layui的一个弹层模块，由于其用户基数较大，所以常常会有人以为layui是layerui<br><br>layer虽然已被 Layui 收编为内置的弹层模块，但仍然会作为一个独立组件全力维护、升级。<br><br>我们此后的征途是星辰大海 ^_^</div>'
+                    ,success: function(layero){
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.find('.layui-layer-btn0').attr({
+                            href: 'http://localhost'
+                            ,target: '_blank'
+                        });
+                    }
+                });
+            }
+            ,offset: function(othis){
+                var type = othis.data('type')
+                    ,text = othis.text();
+
+                layer.open({
+                    type: 1
+                    ,offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                    ,id: 'layerDemo'+type //防止重复弹出
+                    ,content: '<div style="padding: 20px 100px;">'+ text +'</div>'
+                    ,btn: '关闭全部'
+                    ,btnAlign: 'c' //按钮居中
+                    ,shade: 0 //不显示遮罩
+                    ,yes: function(){
+                        layer.closeAll();
+                    }
+                });
+            }
+        };
+
+        $('.layui-btn-my').on('click', function(){
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+
+    });
+
+</script>
+
+<script src="/js/jquery.js"></script>
+<script>
+
+    function loadBodyBtn(page) {
+        $("#addBody").load(page);
+    }
+    $("#addBody").load("input.html");
+</script>
+</body>
+</html>

@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectByPrimaryKey(id);
     }
 
-    @Cacheable(value = "user:list")
+    //@Cacheable(value = "user:list")
     @Override
     public List<User> findAll() {
         logger.info("find all go mysql ...");

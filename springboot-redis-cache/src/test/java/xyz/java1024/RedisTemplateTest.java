@@ -14,6 +14,8 @@ import java.util.Set;
 @SpringBootTest(classes = RedisApp.class)
 public class RedisTemplateTest {
 
+
+
     @Resource
     private RedisTemplate redisTemplate;
 
