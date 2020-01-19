@@ -7,6 +7,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -119,4 +121,50 @@ public class RedisTemplateTest {
         Set reverseRange = redisTemplate.opsForZSet().reverseRange("java1024", 0, -1);
         System.out.println("reverseRange = " + reverseRange);
     }
+
+    @Test
+    public void test() {
+
+        List list = new ArrayList();
+        list.add("1");
+        list.add("2");
+        Long delete = redisTemplate.opsForHash().delete("testList",list.toArray());
+        System.out.println("delete = " + delete);
+
+    }
+
+    @Test
+    public void testAddHash() {
+
+        List<String> list = new ArrayList();
+        list.add("1");
+        list.add("2");redisTemplate.opsForHash().put("testList","5",5555);
+        System.out.println("put success");
+
+
+    }
+
+    @Test
+    public void testSetAdd() {
+
+        Set set = new HashSet();
+        set.add(1);
+        set.add(2);
+
+        redisTemplate.opsForSet().add("testSet",set.toArray());
+
+    }
+
+    @Test
+    public void testSetRm() {
+
+        Set set = new HashSet();
+        set.add(1);
+        set.add(2);
+
+        Long testSet = redisTemplate.opsForSet().remove("testSet", set.toArray());
+        System.out.println("testSet = " + testSet);
+
+    }
+
 }

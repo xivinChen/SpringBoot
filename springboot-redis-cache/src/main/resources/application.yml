@@ -15,7 +15,7 @@ spring:
     username: root
     password: 123zxc
   redis:
-    host: redis-compose
+    host: 127.0.0.1
     port: 6379
     password: 123zxc
     database: 0
