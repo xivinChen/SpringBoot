@@ -3,11 +3,10 @@ services:
   mysql-compose:
     image: mysql:5.7
     container_name: mysql-compose
-    network_mode: bridge
-    hostname: mysql-compose
+    network_mode: host
     environment:
       MYSQL_ROOT_PASSWORD: 123zxc
     volumes:
       - ./mysql-compose:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "3306:3307"
