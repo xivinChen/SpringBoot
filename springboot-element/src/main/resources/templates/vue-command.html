@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- vue 指令  -->
+<!--
+  v-text 默认简写 {{ }}
+  v-html
+  v-on
+  v-show
+  v-if
+  v-bind
+
+  -->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>vue 指令</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h2 v-text="message"></h2>
+    <h2 v-text="info" ></h2>
+    <h3 v-text="content"></h3>
+    <h3 v-html="content"></h3>
+
+    <!-- v-on 指令 -->
+    <input v-on:click="doId" type="button" value="按钮" />
+    <input @dblclick="doDBId" type="button" value="按钮按钮" />
+
+    <!-- 点击修改 data -->
+    <h2 @click="changeMessage" > {{ message}}</h2>
+
+    <!-- 计数器 -->
+    <div >
+        <button @click="decrement">-</button>
+        <span> {{counter}}</span>
+        <button @click="increment">+</button>
+    </div>
+
+    <!-- v-show demo -->
+    <h1 v-show="isShow"> hhhh1 </h1>
+    <h1 v-show="false"> hhhh2 </h1>
+    <h1 v-show="status != 1"> hhhh3  </h1>
+    <button @click="changeH1"> change h1</button>
+    <button @click="changeStatus"> change status</button>
+
+    <!-- v-show 操作的是样式 display:none v-if操作的dom，会移除整个dom -->
+    <p v-if="isShow" >我是一个p标签</p>
+    <p v-if="status > 0" >我是一个p标签02154</p>
+
+    <!-- v-bind 设置元素属性，如src title class 简写成:-->
+    <a v-bind:href="baidu">{{ baidu }}</a>
+    <img :src="baidu" :title="baidu" :alt="baidu" />
+
+    <!-- v-for demo -->
+    <ul>
+        <li v-for="item in arr"> {{item}}</li>
+    </ul>
+    <ul>
+        <li v-for="(item,index) in city"> {{item}} index {{ index}}</li>
+    </ul>
+
+    <!-- model 双向数据绑定 -->
+    <input type="text" v-model="message" @keyup.enter="getM" />
+
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message: "xivin",
+            info: "java",
+            content: "<a href='' >html</a>",
+            counter: 0,
+            status: 0,
+            isShow: true,
+            baidu: "www.baidu.com",
+            arr: [1,2,3,4,5],
+            city: ["beijing","shanghai","guangzhou","shenzhen"]
+        },
+        methods:{
+            doId: function() {
+                alert("doId");
+            },
+            doDBId: function() {
+                alert("doDBId");
+            },
+            changeMessage: function() {
+                this.message = "change message !"
+            },
+            decrement: function() {
+                if(this.counter > 0) {
+                    this.counter--;
+                }else{
+                    alert('已经不能再烂了！！！')
+                }
+            },
+            increment: function() {
+                this.counter++;
+            },
+            changeH1: function() {
+                this.isShow = !this.isShow;
+            },
+            changeStatus:function() {
+                this.status =1;
+            },
+            getM: function() {
+                alert(this.message);
+            }
+        }
+    })
+</script>
+</html>

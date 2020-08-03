@@ -1,0 +1,17 @@
+server:
+  port: 8085
+spring:
+  rabbitmq:
+    addresses: 47.106.152.252
+    port: 5672
+    username: admin
+    password: admin
+    listener:
+      simple:
+        # 消费的最小线程数量
+        concurrency: 30
+        #acknowledge-mode: manual
+      direct:
+        # 这个队列 多少个线程消费
+        consumers-per-queue: 20
+        #acknowledge-mode: manual
