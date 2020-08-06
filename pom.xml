@@ -18,6 +18,7 @@
         <module>springboot-selenium</module>
         <module>springboot-rabbitmq</module>
         <module>springboot-element</module>
+        <module>springboot-mybatis-generate</module>
     </modules>
 
 
