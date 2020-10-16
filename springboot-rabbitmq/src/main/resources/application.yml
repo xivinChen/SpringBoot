@@ -2,7 +2,7 @@ server:
   port: 8085
 spring:
   rabbitmq:
-    addresses: 47.106.152.252
+    addresses: localhost
     port: 5672
     username: admin
     password: admin

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dabby.wiiserviceminiapp.db.dao.EnterpriseStaffAgentMapper">
+  <resultMap id="BaseResultMap" type="cn.dabby.wiiserviceminiapp.db.entity.EnterpriseStaffAgent">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="agent_id_type" jdbcType="VARCHAR" property="agentIdType" />
+    <result column="agent_id_num" jdbcType="VARCHAR" property="agentIdNum" />
+    <result column="agent_phone" jdbcType="VARCHAR" property="agentPhone" />
+    <result column="agent_fullname" jdbcType="VARCHAR" property="agentFullname" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_enterprise_staff_agent
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.dabby.wiiserviceminiapp.db.entity.EnterpriseStaffAgent">
+    insert into tb_enterprise_staff_agent (id, agent_id_type, agent_id_num, 
+      agent_phone, agent_fullname, is_deleted, 
+      create_time, modify_time)
+    values (#{id,jdbcType=BIGINT}, #{agentIdType,jdbcType=VARCHAR}, #{agentIdNum,jdbcType=VARCHAR}, 
+      #{agentPhone,jdbcType=VARCHAR}, #{agentFullname,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.dabby.wiiserviceminiapp.db.entity.EnterpriseStaffAgent">
+    update tb_enterprise_staff_agent
+    set agent_id_type = #{agentIdType,jdbcType=VARCHAR},
+      agent_id_num = #{agentIdNum,jdbcType=VARCHAR},
+      agent_phone = #{agentPhone,jdbcType=VARCHAR},
+      agent_fullname = #{agentFullname,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, agent_id_type, agent_id_num, agent_phone, agent_fullname, is_deleted, 
+    create_time, modify_time
+    from tb_enterprise_staff_agent
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, agent_id_type, agent_id_num, agent_phone, agent_fullname, is_deleted, 
+    create_time, modify_time
+    from tb_enterprise_staff_agent
+  </select>
+</mapper>

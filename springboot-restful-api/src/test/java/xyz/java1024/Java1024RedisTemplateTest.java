@@ -1,3 +1,4 @@
+/*
 package xyz.java1024;
 
 import org.junit.Test;
@@ -10,12 +11,14 @@ import xyz.java1024.autoconfigure.Java1024RedisTemplate;
 
 import javax.annotation.Resource;
 
+*/
 /**
  * @author xivin
  * @email 1250402127@qq.com
  * @description
  * @date 2019/12/19
- */
+ *//*
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
 public class Java1024RedisTemplateTest {
@@ -34,3 +37,4 @@ public class Java1024RedisTemplateTest {
         System.out.println("test = " + test);
     }
 }
+*/

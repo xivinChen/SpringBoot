@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dabby.fama.db.dao.PushCustomerInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.dabby.fama.db.entity.PushCustomerInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="visit_type" jdbcType="TINYINT" property="visitType" />
+    <result column="reverse_id" jdbcType="INTEGER" property="reverseId" />
+    <result column="visit_name" jdbcType="VARCHAR" property="visitName" />
+    <result column="visit_mobile" jdbcType="VARCHAR" property="visitMobile" />
+    <result column="visit_card" jdbcType="VARCHAR" property="visitCard" />
+    <result column="visit_org_name" jdbcType="VARCHAR" property="visitOrgName" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="visit_time" jdbcType="TIMESTAMP" property="visitTime" />
+    <result column="visit_num" jdbcType="VARCHAR" property="visitNum" />
+    <result column="visit_reason" jdbcType="VARCHAR" property="visitReason" />
+    <result column="emp_name" jdbcType="VARCHAR" property="empName" />
+    <result column="emp_mobile" jdbcType="VARCHAR" property="empMobile" />
+    <result column="emp_org_name" jdbcType="VARCHAR" property="empOrgName" />
+    <result column="emp_org_address" jdbcType="VARCHAR" property="empOrgAddress" />
+    <result column="operator_full_name" jdbcType="VARCHAR" property="operatorFullName" />
+    <result column="operator_id_num" jdbcType="VARCHAR" property="operatorIdNum" />
+    <result column="operator_phone" jdbcType="VARCHAR" property="operatorPhone" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="data_time" jdbcType="TIMESTAMP" property="dataTime" />
+    <result column="data_state" jdbcType="TINYINT" property="dataState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_push_customer_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.dabby.fama.db.entity.PushCustomerInfo">
+    insert into tb_push_customer_info (id, visit_type, reverse_id, 
+      visit_name, visit_mobile, visit_card, 
+      visit_org_name, nick_name, visit_time, 
+      visit_num, visit_reason, emp_name, 
+      emp_mobile, emp_org_name, emp_org_address, 
+      operator_full_name, operator_id_num, operator_phone, 
+      remark, data_time, data_state, 
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{visitType,jdbcType=TINYINT}, #{reverseId,jdbcType=INTEGER}, 
+      #{visitName,jdbcType=VARCHAR}, #{visitMobile,jdbcType=VARCHAR}, #{visitCard,jdbcType=VARCHAR}, 
+      #{visitOrgName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{visitTime,jdbcType=TIMESTAMP}, 
+      #{visitNum,jdbcType=VARCHAR}, #{visitReason,jdbcType=VARCHAR}, #{empName,jdbcType=VARCHAR}, 
+      #{empMobile,jdbcType=VARCHAR}, #{empOrgName,jdbcType=VARCHAR}, #{empOrgAddress,jdbcType=VARCHAR}, 
+      #{operatorFullName,jdbcType=VARCHAR}, #{operatorIdNum,jdbcType=VARCHAR}, #{operatorPhone,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{dataTime,jdbcType=TIMESTAMP}, #{dataState,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.dabby.fama.db.entity.PushCustomerInfo">
+    update tb_push_customer_info
+    set visit_type = #{visitType,jdbcType=TINYINT},
+      reverse_id = #{reverseId,jdbcType=INTEGER},
+      visit_name = #{visitName,jdbcType=VARCHAR},
+      visit_mobile = #{visitMobile,jdbcType=VARCHAR},
+      visit_card = #{visitCard,jdbcType=VARCHAR},
+      visit_org_name = #{visitOrgName,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      visit_time = #{visitTime,jdbcType=TIMESTAMP},
+      visit_num = #{visitNum,jdbcType=VARCHAR},
+      visit_reason = #{visitReason,jdbcType=VARCHAR},
+      emp_name = #{empName,jdbcType=VARCHAR},
+      emp_mobile = #{empMobile,jdbcType=VARCHAR},
+      emp_org_name = #{empOrgName,jdbcType=VARCHAR},
+      emp_org_address = #{empOrgAddress,jdbcType=VARCHAR},
+      operator_full_name = #{operatorFullName,jdbcType=VARCHAR},
+      operator_id_num = #{operatorIdNum,jdbcType=VARCHAR},
+      operator_phone = #{operatorPhone,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      data_time = #{dataTime,jdbcType=TIMESTAMP},
+      data_state = #{dataState,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, visit_type, reverse_id, visit_name, visit_mobile, visit_card, visit_org_name, 
+    nick_name, visit_time, visit_num, visit_reason, emp_name, emp_mobile, emp_org_name, 
+    emp_org_address, operator_full_name, operator_id_num, operator_phone, remark, data_time, 
+    data_state, create_time
+    from tb_push_customer_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, visit_type, reverse_id, visit_name, visit_mobile, visit_card, visit_org_name, 
+    nick_name, visit_time, visit_num, visit_reason, emp_name, emp_mobile, emp_org_name, 
+    emp_org_address, operator_full_name, operator_id_num, operator_phone, remark, data_time, 
+    data_state, create_time
+    from tb_push_customer_info
+  </select>
+</mapper>

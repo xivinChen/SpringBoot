@@ -19,6 +19,8 @@
         <module>springboot-rabbitmq</module>
         <module>springboot-element</module>
         <module>springboot-mybatis-generate</module>
+        <module>springboot-druid</module>
+        <module>springboot-rocketmq</module>
     </modules>
 
 

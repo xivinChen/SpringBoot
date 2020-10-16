@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dabby.addresslibrary.db.dao.AreaDoorMapper">
+  <resultMap id="BaseResultMap" type="cn.dabby.addresslibrary.db.entity.AreaDoor">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="version" jdbcType="TINYINT" property="version" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="address_code" jdbcType="VARCHAR" property="addressCode" />
+    <result column="address_name" jdbcType="VARCHAR" property="addressName" />
+    <result column="address_status" jdbcType="TINYINT" property="addressStatus" />
+    <result column="build_name" jdbcType="VARCHAR" property="buildName" />
+    <result column="building_code" jdbcType="VARCHAR" property="buildingCode" />
+    <result column="check_status" jdbcType="TINYINT" property="checkStatus" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="data_id" jdbcType="VARCHAR" property="dataId" />
+    <result column="doorplate_number" jdbcType="VARCHAR" property="doorplateNumber" />
+    <result column="grid_code" jdbcType="VARCHAR" property="gridCode" />
+    <result column="grid_committees" jdbcType="VARCHAR" property="gridCommittees" />
+    <result column="grid_geomoetry" jdbcType="VARCHAR" property="gridGeomoetry" />
+    <result column="grid_name" jdbcType="VARCHAR" property="gridName" />
+    <result column="gzx" jdbcType="DECIMAL" property="gzx" />
+    <result column="gzy" jdbcType="DECIMAL" property="gzy" />
+    <result column="gzz" jdbcType="DECIMAL" property="gzz" />
+    <result column="is_remove" jdbcType="TINYINT" property="isRemove" />
+    <result column="ssjlxmc" jdbcType="VARCHAR" property="ssjlxmc" />
+    <result column="sspcsmc" jdbcType="VARCHAR" property="sspcsmc" />
+    <result column="stree_name" jdbcType="VARCHAR" property="streeName" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="uncheck_house" jdbcType="INTEGER" property="uncheckHouse" />
+    <result column="wgs84x" jdbcType="DECIMAL" property="wgs84x" />
+    <result column="wgs84y" jdbcType="DECIMAL" property="wgs84y" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.dabby.addresslibrary.db.entity.AreaDoor">
+    insert into tb_area_door (id, create_date, modify_date, 
+      version, address, address_code, 
+      address_name, address_status, build_name, 
+      building_code, check_status, code, 
+      data_id, doorplate_number, grid_code, 
+      grid_committees, grid_geomoetry, grid_name, 
+      gzx, gzy, gzz, is_remove, 
+      ssjlxmc, sspcsmc, stree_name, 
+      type, uncheck_house, wgs84x, 
+      wgs84y)
+    values (#{id,jdbcType=BIGINT}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=TINYINT}, #{address,jdbcType=VARCHAR}, #{addressCode,jdbcType=VARCHAR}, 
+      #{addressName,jdbcType=VARCHAR}, #{addressStatus,jdbcType=TINYINT}, #{buildName,jdbcType=VARCHAR}, 
+      #{buildingCode,jdbcType=VARCHAR}, #{checkStatus,jdbcType=TINYINT}, #{code,jdbcType=VARCHAR}, 
+      #{dataId,jdbcType=VARCHAR}, #{doorplateNumber,jdbcType=VARCHAR}, #{gridCode,jdbcType=VARCHAR}, 
+      #{gridCommittees,jdbcType=VARCHAR}, #{gridGeomoetry,jdbcType=VARCHAR}, #{gridName,jdbcType=VARCHAR}, 
+      #{gzx,jdbcType=DECIMAL}, #{gzy,jdbcType=DECIMAL}, #{gzz,jdbcType=DECIMAL}, #{isRemove,jdbcType=TINYINT}, 
+      #{ssjlxmc,jdbcType=VARCHAR}, #{sspcsmc,jdbcType=VARCHAR}, #{streeName,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{uncheckHouse,jdbcType=INTEGER}, #{wgs84x,jdbcType=DECIMAL}, 
+      #{wgs84y,jdbcType=DECIMAL})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, create_date, modify_date, version, address, address_code, address_name, 
+    address_status, build_name, building_code, check_status, code, data_id, doorplate_number, 
+    grid_code, grid_committees, grid_geomoetry, grid_name, gzx, gzy, gzz, is_remove, 
+    ssjlxmc, sspcsmc, stree_name, type, uncheck_house, wgs84x, wgs84y
+    from tb_area_door
+  </select>
+</mapper>

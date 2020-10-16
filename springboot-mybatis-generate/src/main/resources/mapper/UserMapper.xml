@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.java1024.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="xyz.java1024.vo.User1">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="wx_open_id" jdbcType="VARCHAR" property="wxOpenId" />
+    <result column="wx_nickname" jdbcType="VARCHAR" property="wxNickname" />
+    <result column="wx_sex" jdbcType="TINYINT" property="wxSex" />
+    <result column="wx_image" jdbcType="VARCHAR" property="wxImage" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user1
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="xyz.java1024.vo.User1">
+    insert into user1 (id, username, tel,
+      password, wx_open_id, wx_nickname, 
+      wx_sex, wx_image, remark, 
+      status, created_at)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{wxOpenId,jdbcType=VARCHAR}, #{wxNickname,jdbcType=VARCHAR}, 
+      #{wxSex,jdbcType=TINYINT}, #{wxImage,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{createdAt,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="xyz.java1024.vo.User1">
+    update user1
+    set username = #{username,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      wx_open_id = #{wxOpenId,jdbcType=VARCHAR},
+      wx_nickname = #{wxNickname,jdbcType=VARCHAR},
+      wx_sex = #{wxSex,jdbcType=TINYINT},
+      wx_image = #{wxImage,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, username, tel, password, wx_open_id, wx_nickname, wx_sex, wx_image, remark, 
+    status, created_at
+    from user1
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, username, tel, password, wx_open_id, wx_nickname, wx_sex, wx_image, remark, 
+    status, created_at
+    from user1
+  </select>
+</mapper>

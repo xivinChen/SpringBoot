@@ -52,7 +52,7 @@
 
 
         <!-- 指定数据库连接的属性，MBG 使用 JDBC 的 DatabaseMetaData 类来发现配置中指定表的属性， 每个 context 元素都需要一个 connectionFactory 或 jdbcConnection 元素 -->
-        <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.jdbcUrl}" userId="${jdbc.user}" password="${jdbc.password}"/>
+        <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.jdbcUrl}" userId="${jdbc.user1}" password="${jdbc.password}"/>
 
 
         <!-- javaTypeResolver：处理数据库中的类型到 Java 中的类型，默认使用 org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl

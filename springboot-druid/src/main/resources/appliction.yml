@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/test
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      min-idle: 5
+      maxActive: 20
+      maxWait: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+#   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall,slf4j
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+# 监控配置
+# StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+#是否启用StatViewServlet（监控页面）默认值为false
+# （考虑到安全问题默认并未启动，如需启用建议设置密码或白名单以保障安全）
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: 123456
+# WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+# WebStatFilter用于采集web-jdbc关联监控的数据。
+# 是否启用StatFilter默认值false
+      web-stat-filter:
+        enabled: true
+        exclusions: "*.js,*.css,/druid/*"
+      filter: stat
+
+# 扫描mapper.xml文件
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
