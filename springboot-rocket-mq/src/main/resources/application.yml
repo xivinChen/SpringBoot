@@ -2,7 +2,7 @@ server:
   port: 8015
 
 rocketmq:
-  name-server: 47.106.152.252:9876
+  name-server: localhost:9876
   producer:
     send-message-timeout: 300000
     group: test_rocktmq_group
