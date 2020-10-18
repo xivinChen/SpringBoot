@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.java1024.dao.ProductMapper">
+  <resultMap id="BaseResultMap" type="xyz.java1024.vo.Product">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="link_tel" jdbcType="VARCHAR" property="linkTel" />
+    <result column="wx_num" jdbcType="VARCHAR" property="wxNum" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
+    <result column="product_category_id" jdbcType="INTEGER" property="productCategoryId" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="xyz.java1024.vo.Product">
+    insert into product (id, user_id, link_tel, 
+      wx_num, name, title, 
+      desc, image, ext_info, 
+      product_category_id, status, created_at
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{linkTel,jdbcType=VARCHAR}, 
+      #{wxNum,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{desc,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{extInfo,jdbcType=VARCHAR}, 
+      #{productCategoryId,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{createdAt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="xyz.java1024.vo.Product">
+    update product
+    set user_id = #{userId,jdbcType=INTEGER},
+      link_tel = #{linkTel,jdbcType=VARCHAR},
+      wx_num = #{wxNum,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      desc = #{desc,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      ext_info = #{extInfo,jdbcType=VARCHAR},
+      product_category_id = #{productCategoryId,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_id, link_tel, wx_num, name, title, desc, image, ext_info, product_category_id, 
+    status, created_at
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, link_tel, wx_num, name, title, desc, image, ext_info, product_category_id, 
+    status, created_at
+    from product
+  </select>
+</mapper>

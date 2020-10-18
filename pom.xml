@@ -9,12 +9,18 @@
     <packaging>pom</packaging>
     <version>1.0.1-SNAPSHOT</version>
     <modules>
+        <module>springboot-hello</module>
         <module>springboot-ssm</module>
         <module>springboot-restful-api</module>
         <module>springboot-redis-cache</module>
         <module>springboot-redis-cache-starter</module>
         <module>springboot-thymeleaf</module>
         <module>springboot-selenium</module>
+        <module>springboot-rabbitmq</module>
+        <module>springboot-element</module>
+        <module>springboot-mybatis-generate</module>
+        <module>springboot-druid</module>
+        <module>springboot-rocketmq</module>
     </modules>
 
 

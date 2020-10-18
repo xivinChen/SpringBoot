@@ -20,7 +20,7 @@
     <!--@mbg.generated-->
     select 
     <include refid="Base_Column_List" />
-    from user
+    from user1
     where id = #{id,jdbcType=INTEGER}
   </select>
 
@@ -28,7 +28,7 @@
     <!--@mbg.generated-->
     select
     <include refid="Base_Column_List" />
-    from user
+    from user1
     where username = #{username,jdbcType=INTEGER}
   </select>
 
@@ -36,18 +36,18 @@
     <!--@mbg.generated-->
     select
     <include refid="Base_Column_List" />
-    from user
+    from user1
     where tel = #{tel,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--@mbg.generated-->
-    delete from user
+    delete from user1
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="xyz.User" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into user (username, tel, `password`, 
+    insert into user1 (username, tel, `password`,
       `status`, is_binding, created_at, updated_at
       )
     values (#{username,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
@@ -56,7 +56,7 @@
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="xyz.User" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into user
+    insert into user1
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="username != null">
         username,
@@ -106,7 +106,7 @@
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="xyz.User">
     <!--@mbg.generated-->
-    update user
+    update user1
     <set>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
@@ -128,7 +128,7 @@
   </update>
   <update id="updateByPrimaryKeySelectiveExcludeBase" parameterType="xyz.User">
     <!--@mbg.generated-->
-    update user
+    update user1
     <set>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
@@ -147,7 +147,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xyz.User">
     <!--@mbg.generated-->
-    update user
+    update user1
     set username = #{username,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
       `password` = #{password,jdbcType=VARCHAR},
@@ -159,26 +159,26 @@
 
   <select id="checkExistByUsername" parameterType="java.lang.String" resultType="java.lang.Integer">
     select EXISTS
-    (select 1 from user where username=#{username} limit 1)
+    (select 1 from user1 where username=#{username} limit 1)
   </select>
 
   <select id="checkExistByTel" parameterType="java.lang.String" resultType="java.lang.Integer" >
     select EXISTS
-    (select 1 from user where tel=#{tel} limit 1)
+    (select 1 from user1 where tel=#{tel} limit 1)
   </select>
 
   <select id="checkExistById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-    select exists (select 1 from user where id = #{id,jdbcType=INTEGER} limit 1)
+    select exists (select 1 from user1 where id = #{id,jdbcType=INTEGER} limit 1)
   </select>
 
   <update id="updateBinding" parameterType="java.lang.Integer">
-    update user
+    update user1
     set is_binding = #{param2}
     where id= #{param1}
   </update>
 
   <update id="updatePasswordByTel" parameterType="java.lang.String">
-    update user
+    update user1
     set password = #{param2}
     where tel= #{param1}
   </update>
@@ -186,7 +186,7 @@
   <select id="getByIds" parameterType="List" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"></include>
-    from user
+    from user1
     where id in
     <foreach collection="list" item="id" open="(" close=")" separator=",">
       #{id}
@@ -197,13 +197,13 @@
   <select id="list" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />
-    from user
+    from user1
   </select>
 
   <select id="listBySearch" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from user
+    from user1
     <where>
       <if test="status != null">
         and status = #{status}

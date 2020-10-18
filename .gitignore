@@ -3,3 +3,14 @@
 /springboot-restful-api/target/
 /springboot-ssm/target/
 .idea
+/springboot-druid/springboot-druid.iml
+/springboot-druid/target/classes/
+/springboot-element/springboot-element.iml
+/springboot-element/target/
+/springboot-mybatis-generate/target/
+/springboot-rabbitmq/target/
+/springboot-redis-cache-starter/springboot-redis-cache-starter.iml
+/springboot-rocketmq/target/
+/springboot-rocketmq/springboot-rocketmq.iml
+/springboot-selenium/springboot-selenium.iml
+/springboot-thymeleaf/springboot-thymeleaf.iml

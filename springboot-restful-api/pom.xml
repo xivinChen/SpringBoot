@@ -24,11 +24,11 @@
 
   <dependencies>
 
-    <dependency>
+    <!--<dependency>
       <groupId>xyz.java1024</groupId>
       <artifactId>springboot-redis-cache-starter</artifactId>
       <version>1.0-SNAPSHOT</version>
-    </dependency>
+    </dependency>-->
 
     <dependency>
       <groupId>io.springfox</groupId>

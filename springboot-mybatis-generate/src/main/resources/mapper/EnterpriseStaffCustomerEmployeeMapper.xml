@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dabby.fama.db.dao.EnterpriseStaffCustomerEmployeeMapper">
+  <resultMap id="BaseResultMap" type="cn.dabby.fama.db.entity.EnterpriseStaffCustomerEmployee">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="enterprise_staff_id" jdbcType="BIGINT" property="enterpriseStaffId" />
+    <result column="customer_employee_id" jdbcType="BIGINT" property="customerEmployeeId" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_enterprise_staff_customer_employee
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.dabby.fama.db.entity.EnterpriseStaffCustomerEmployee">
+    insert into tb_enterprise_staff_customer_employee (id, enterprise_staff_id, customer_employee_id, 
+      is_deleted, create_time, modify_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{enterpriseStaffId,jdbcType=BIGINT}, #{customerEmployeeId,jdbcType=BIGINT}, 
+      #{isDeleted,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.dabby.fama.db.entity.EnterpriseStaffCustomerEmployee">
+    update tb_enterprise_staff_customer_employee
+    set enterprise_staff_id = #{enterpriseStaffId,jdbcType=BIGINT},
+      customer_employee_id = #{customerEmployeeId,jdbcType=BIGINT},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, enterprise_staff_id, customer_employee_id, is_deleted, create_time, modify_time
+    from tb_enterprise_staff_customer_employee
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, enterprise_staff_id, customer_employee_id, is_deleted, create_time, modify_time
+    from tb_enterprise_staff_customer_employee
+  </select>
+</mapper>

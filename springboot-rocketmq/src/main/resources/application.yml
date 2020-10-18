@@ -1,0 +1,8 @@
+server:
+  port: 8012
+
+rocketmq:
+  producer:
+    namesrvAddr: localhost:9876
+    groupName: rocketmq_test
+    default: false
