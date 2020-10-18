@@ -1,9 +1,7 @@
 package xyz.java1024;
 
-import org.apache.rocketmq.common.message.Message;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -12,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @SpringBootApplication
 @RestController
-public class App 
+public class RocketMqApp
 {
     public static void main( String[] args )
     {
-        SpringApplication.run(App.class);
+        SpringApplication.run(RocketMqApp.class);
     }
 
 }

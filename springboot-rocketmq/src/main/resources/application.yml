@@ -3,6 +3,6 @@ server:
 
 rocketmq:
   producer:
-    namesrvAddr: localhost:9876
+    namesrvAddr: 47.106.152.252:9876
     groupName: rocketmq_test
     default: false
