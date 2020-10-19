@@ -25,7 +25,7 @@ public class TestConsumer extends ConsumerConfig implements ApplicationListener<
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 
         try {
-            super.listener("test_topic","test_tag");
+            super.listener("test_topic","*");
             log.info(" consumer test_topic success");
         }catch (Exception e) {
             log.error(" consumer fail ,e => {}",e.getMessage());

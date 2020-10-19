@@ -34,6 +34,9 @@ public abstract class ConsumerConfig {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(groupName);
         consumer.setNamesrvAddr(namesrvAddr);
         consumer.subscribe(topic,tag);
+        consumer.setVipChannelEnabled(false);
+
+        log.info(" consumer => {}",consumer);
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
@@ -42,6 +45,8 @@ public abstract class ConsumerConfig {
                 return null;
             }
         });
+
+        consumer.start();
 
     }
 
